@@ -1,0 +1,231 @@
+/* ==========================================================================
+   0. Typsnittsimport (LAGAD: Nu hämtas Open Sans på rätt sätt)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+/* ==========================================================================
+   1. Grundinställningar & Nollställning (Open Sans)
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Strikt nollställning av dolda standardmarginaler i webbläsaren */
+h1,
+h2,
+p,
+ul,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #c8a5a4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 0;
+    color: #111111;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. Huvudbehållare (Receptkortet)
+   ========================================================================== */
+.recipe-container {
+    background-color: #ffffff;
+    max-width: 1280px;
+    /* Hela vita behållaren är exakt 1280px bred på dator */
+    width: 100%;
+    margin: 0 0 60px 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
+   3. Bildhantering (Top Image)
+   ========================================================================== */
+.hero-image img {
+    width: 100%;
+    height: 250px;
+    /* Höjd för mobilskärmar */
+    object-fit: cover;
+    display: block;
+}
+
+@media (min-width: 1280px) {
+    .hero-image img {
+        height: 500px;
+        /* Exakt 500px hög på datorskärmar */
+    }
+}
+
+/* Textens inre marginaler */
+.recipe-content {
+    padding: 50px 48px;
+    /* 48px på sidorna gör textytan inuti exakt 1184px bred */
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .recipe-content {
+        padding: 32px 20px;
+    }
+}
+
+/* ==========================================================================
+   4. Header & Introduktion 
+   ========================================================================== */
+header h1 {
+    font-size: 28px;
+    color: #b3002d;
+    font-weight: 700;
+    /* Bold */
+    margin-top: 14px;
+    margin-bottom: 28px;
+    /* Luft mellan rubriken och den grå boxen */
+}
+
+.intro-text {
+    background-color: #eaeaea;
+    padding: 20px 24px;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 40px !important;
+    /* Exakt 40px tomrum till rubriken under */
+}
+
+.intro-text p {
+    font-size: 16px;
+    color: #222222;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   5. Layout (Styr rymden mellan de stora sektionerna)
+   ========================================================================== */
+.recipe-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    /* Ger exakt 40px avstånd mellan ingredienser-sektionen och instruktioner-sektionen */
+}
+
+/* Sätter även 40px luft under instruktionsblocket ner till serveringsförslaget */
+.instructions {
+    margin-bottom: 40px;
+}
+
+/* Allmänna regler för h2-rubriker inuti sektionerna */
+section h2 {
+    font-size: 24px;
+    color: #000000;
+    font-weight: 700;
+    /* Bold */
+    margin-bottom: 12px;
+    /* Tätt och fint avstånd ner till innehållet under */
+}
+
+/* ==========================================================================
+   6. Ingredienser
+   ========================================================================== */
+.portions {
+    font-size: 16px;
+    color: #555555;
+    margin-bottom: 20px;
+    /* Fint avstånd ner till första listpunkten */
+}
+
+.ingredients ul {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    padding-left: 20px !important;
+    margin-top: 0 !important;
+}
+
+.ingredients li {
+    padding: 6px 0;
+    /* Balanserat radavstånd enligt din Figma-bild */
+    font-size: 16px;
+    color: #222222;
+    line-height: 1.4;
+    display: list-item !important;
+}
+
+/* Vanlig, ren listpunkt som blir smal och fin tack vare att Open Sans laddas korrekt */
+.ingredients ul li::marker {
+    font-size: 12px;
+    color: #111111;
+}
+
+.ingredients li strong {
+    font-weight: 700 !important;
+    padding-right: 4px;
+}
+
+/* ==========================================================================
+   7. Instruktioner
+   ========================================================================== */
+.instructions ol {
+    padding-left: 24px;
+    margin-top: 0 !important;
+}
+
+.instructions li {
+    padding: 6px 0;
+    padding-left: 6px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #222222;
+}
+
+.instructions ol li::marker {
+    font-weight: 400;
+    font-size: 16px;
+    color: #111111;
+}
+
+/* ==========================================================================
+   8. Serveringsförslag (Galleri i botten)
+   ========================================================================== */
+.serveringsforslag h2 {
+    margin-bottom: 16px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    justify-content: center;
+}
+
+/* Inställningar för MOBIL */
+.gallery-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background-color: #eaeaea;
+}
+
+/* Inställningar för DATOR */
+@media (min-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-grid img {
+        width: 100%;
+        height: 467px;
+    }
+}
