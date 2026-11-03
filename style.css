@@ -41,7 +41,7 @@ body {
 /* ==========================================================================
    3. Bildhantering (Top Image)
    ========================================================================== */
-.hero-image img {
+.hero-image  {
     width: 100%;
     max-width: 100%;
     height: 250px;
@@ -51,7 +51,7 @@ body {
 }
 
 @media (min-width: 1280px) {
-    .hero-image img {
+    .hero-image  {
         height: 500px;
         /* Exakt 500px hög på datorskärmar */
     }
