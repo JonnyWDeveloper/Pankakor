@@ -7,7 +7,7 @@
     <meta name="description"
         content="Ett enkelt recept på tunna pannkakor med mjöl, mjölk och ägg. Servera med sylt, bär eller frukt.">
     <title>Pannkakor - Enkelt recept på pannkakor</title>
-    <!-- Tidigare Google Fonts-lösning, bortkommenterad:
+    <!--Prestanda: Tidigare Google Fonts-lösning, bortkommenterad:
             Google Fonts-CSS:en blockerade första rendering medan den hämtades.
             Därefter hämtades WOFF2 separat, vilket skapade en extra kritisk begärandekedja
             och kunde fördröja LCP (när sidans största synliga innehåll visas).
@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
     -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- LCP (Largest Contentful Paint) mäter när sidans största synliga innehåll visas.
-            Direkt preload hoppar över Google Fonts CSS-ledet och kan korta den kritiska kedjan. -->
+    <!--Prestanda: WOFF2 är ett komprimerat format för webbtypsnitt. Utan preload upptäcks filen först när style.css har lästs; preload startar hämtningen direkt från HTML parallellt med CSS. -->
     <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2"
         as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css">
@@ -28,9 +27,15 @@
 
     <main id="main-content" class="recipe-container" tabindex="-1">
         <!-- Huvudbild högst upp -->
-        <!-- Prioritera huvudbilden eftersom den sannolikt är sidans LCP-bild. -->
-        <img class="hero-image" src="images/Pancake_Top.png" alt="En tunn pannkaka vikt med hallon och grädde"
-            fetchpriority="high">
+        <!-- WebP väljs först, sedan AVIF och PNG som reserv för webbläsare som saknar stöd för formaten ovan. -->
+        <!-- LCP (Largest Contentful Paint) mäter tiden tills sidans största synliga innehåll visas. 
+         Därför har huvudbilden hög prioritet. -->
+        <picture>
+            <source srcset="images/webp/Pancake_Top.webp" type="image/webp">
+            <source srcset="images/avif/Pancake_Top.avif" type="image/avif">
+            <img class="hero-image" src="images/png/Pancake_Top.png" alt="En tunn pannkaka vikt med hallon och grädde"
+                fetchpriority="high">
+        </picture>
 
 
         <div class="recipe-content">
@@ -84,13 +89,25 @@
                 <h2>Serveringsförslag</h2>
                 <div class="gallery-grid">
                     <figure>
-                        <img src="images/Pancake_Bottom_Left.png" alt="Pannkakor med citron, hallon och grädde."
-                            loading="lazy" decoding="async">
+                        <!-- WebP väljs först; AVIF och PNG är reservformat.
+                                loading="lazy" skjuter upp hämtningen; decoding="async" avkodar utan att pausa sidan. -->
+                        <picture>
+                            <source srcset="images/webp/Pancake_Bottom_Left.webp" type="image/webp">
+                            <source srcset="images/avif/Pancake_Bottom_Left.avif" type="image/avif">
+                            <img src="images/png/Pancake_Bottom_Left.png" alt="Pannkakor med citron, hallon och grädde."
+                                loading="lazy" decoding="async">
+                        </picture>
                         <figcaption>Pannkakor med citron, hallon och grädde.</figcaption>
                     </figure>
                     <figure>
-                        <img src="images/Pancake_Bottom_Right.png" alt="Vikta pannkakor med apelsin, honung och grädde."
-                            loading="lazy" decoding="async">
+                        <!-- WebP väljs först; AVIF och PNG är reservformat.
+                                loading="lazy" skjuter upp hämtningen; decoding="async" avkodar utan att pausa sidan. -->
+                        <picture>
+                            <source srcset="images/webp/Pancake_Bottom_Right.webp" type="image/webp">
+                            <source srcset="images/avif/Pancake_Bottom_Right.avif" type="image/avif">
+                            <img src="images/png/Pancake_Bottom_Right.png"
+                                alt="Vikta pannkakor med apelsin, honung och grädde." loading="lazy" decoding="async">
+                        </picture>
                         <figcaption>Vikta pannkakor med apelsin, honung och grädde.</figcaption>
                     </figure><!-- dl = description list (beskrivningslista) grupperar informationen;
                         dt = description term (term) anger namnet;
