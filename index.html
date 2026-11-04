@@ -7,15 +7,30 @@
     <meta name="description"
         content="Ett enkelt recept på tunna pannkakor med mjöl, mjölk och ägg. Servera med sylt, bär eller frukt.">
     <title>Pannkakor - Enkelt recept på pannkakor</title>
+    <!-- Tidigare Google Fonts-lösning, bortkommenterad:
+            Google Fonts-CSS:en blockerade första rendering medan den hämtades.
+            Därefter hämtades WOFF2 separat, vilket skapade en extra kritisk begärandekedja
+            och kunde fördröja LCP (när sidans största synliga innehåll visas).
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
+    -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- LCP (Largest Contentful Paint) mäter när sidans största synliga innehåll visas.
+            Direkt preload hoppar över Google Fonts CSS-ledet och kan korta den kritiska kedjan. -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2"
+        as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Hoppa till huvudinnehållet</a>
 
-    <main class="recipe-container">
+    <main id="main-content" class="recipe-container" tabindex="-1">
         <!-- Huvudbild högst upp -->
-
-        <img class="hero-image" src="images/Pancake_Top.png" alt="Traditionella tunna pannkakor med bär">
+        <!-- Prioritera huvudbilden eftersom den sannolikt är sidans LCP-bild. -->
+        <img class="hero-image" src="images/Pancake_Top.png" alt="En tunn pannkaka vikt med hallon och grädde"
+            fetchpriority="high">
 
 
         <div class="recipe-content">
@@ -33,9 +48,7 @@
                 <!-- Ingredienser -->
                 <section class="ingredients">
                     <h2>Ingredienser</h2>
-                    <!-- dl = description list (beskrivningslista) grupperar informationen;
-                        dt = description term (term) anger namnet;
-                        dd = description details (beskrivning) anger värdet. -->
+
                     <dl class="portions">
                         <dt class="visually-hidden">Antal portioner</dt>
                         <dd>För 4 portioner</dd>
@@ -71,14 +84,17 @@
                 <h2>Serveringsförslag</h2>
                 <div class="gallery-grid">
                     <figure>
-                        <img src="images/Pancake_Bottom_Left.png" alt="Pannkakor med citron, hallon och grädde.">
+                        <img src="images/Pancake_Bottom_Left.png" alt="Pannkakor med citron, hallon och grädde."
+                            loading="lazy" decoding="async">
                         <figcaption>Pannkakor med citron, hallon och grädde.</figcaption>
                     </figure>
                     <figure>
-                        <img src="images/Pancake_Bottom_Right.png"
-                            alt="Vikta pannkakor med apelsin, honung och grädde.">
+                        <img src="images/Pancake_Bottom_Right.png" alt="Vikta pannkakor med apelsin, honung och grädde."
+                            loading="lazy" decoding="async">
                         <figcaption>Vikta pannkakor med apelsin, honung och grädde.</figcaption>
-                    </figure>
+                    </figure><!-- dl = description list (beskrivningslista) grupperar informationen;
+                        dt = description term (term) anger namnet;
+                        dd = description details (beskrivning) anger värdet. -->
                 </div>
             </section>
         </div>
