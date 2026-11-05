@@ -52,7 +52,7 @@ body {
 
 /* Synlig fokusmarkering vid tangentbordsnavigering, till exempel med Tab (WCAG 2.4.7). */
 :focus-visible {
-    outline: 1px solid #111111;
+    outline: 2px solid #0108ce;
     outline-offset: 3px;
 }
 
