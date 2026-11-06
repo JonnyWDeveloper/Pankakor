@@ -22,6 +22,8 @@
 
     <!-- Preload för LCP-bilden med fetchpriority="high" för att uppfylla Lighthouse krav -->
     <link rel="preload" as="image" href="images/webp/Pancake_Top.webp" type="image/webp" fetchpriority="high">
+    <!-- Inline SVG-favicon för att undvika 404-fel i konsolen (som drar ner Best Practices till 96) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥞</text></svg>">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -37,7 +39,7 @@
             <source srcset="images/webp/Pancake_Top.webp" type="image/webp">
             <source srcset="images/avif/Pancake_Top.avif" type="image/avif">
             <img class="hero-image" src="images/png/Pancake_Top.png" alt="En tunn pannkaka vikt med hallon och grädde"
-                fetchpriority="high">
+                width="1280" height="500" fetchpriority="high">
         </picture>
 
 
@@ -101,7 +103,7 @@
                             <source srcset="images/webp/Pancake_Bottom_Left.webp" type="image/webp">
                             <source srcset="images/avif/Pancake_Bottom_Left.avif" type="image/avif">
                             <img src="images/png/Pancake_Bottom_Left.png" alt="Pannkakor med citron, hallon och grädde."
-                                loading="lazy" decoding="async">
+                                width="800" height="600" loading="lazy" decoding="async">
                         </picture>
                         <figcaption>Pannkakor med citron, hallon och grädde.</figcaption>
                     </figure>
@@ -112,7 +114,7 @@
                             <source srcset="images/webp/Pancake_Bottom_Right.webp" type="image/webp">
                             <source srcset="images/avif/Pancake_Bottom_Right.avif" type="image/avif">
                             <img src="images/png/Pancake_Bottom_Right.png"
-                                alt="Vikta pannkakor med apelsin, honung och grädde." loading="lazy" decoding="async">
+                                alt="Vikta pannkakor med apelsin, honung och grädde." width="800" height="600" loading="lazy" decoding="async">
                         </picture>
                         <figcaption>Vikta pannkakor med apelsin, honung och grädde.</figcaption>
                     </figure>
