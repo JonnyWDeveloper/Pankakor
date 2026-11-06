@@ -20,8 +20,8 @@
     <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2"
         as="font" type="font/woff2" crossorigin>
 
-    <!-- Preload för LCP-bilden så Lighthouse godkänner LCP request discovery och behåller PNG-fallback -->
-    <link rel="preload" as="image" href="images/webp/Pancake_Top.webp" type="image/webp">
+    <!-- Preload för LCP-bilden med fetchpriority="high" för att uppfylla Lighthouse krav -->
+    <link rel="preload" as="image" href="images/webp/Pancake_Top.webp" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="style.css">
 </head>
 
