@@ -19,6 +19,8 @@
     <!--Prestanda: WOFF2 är ett komprimerat format för webbtypsnitt. Utan preload upptäcks filen först när style.css har lästs; preload startar hämtningen direkt från HTML parallellt med CSS. -->
     <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2"
         as="font" type="font/woff2" crossorigin>
+    <!-- Preload för LCP-bilden så den upptäcks direkt i initiala dokumentet (och behåller PNG-fallback för äldre webbläsare) -->
+    <link rel="preload" as="image" href="images/webp/Pancake_Top.webp" type="image/webp">
     <link rel="stylesheet" href="style.css">
 </head>
 
