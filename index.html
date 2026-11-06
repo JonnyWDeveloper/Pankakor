@@ -24,6 +24,8 @@
     <link rel="preload" as="image" href="images/webp/Pancake_Top.webp" type="image/webp" fetchpriority="high">
     <!-- Inline SVG-favicon för att undvika 404-fel i konsolen (som drar ner Best Practices till 96) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥞</text></svg>">
+    <!-- Preload för style.css för att korta ner den kritiska begärandekedjan (Network dependency tree) -->
+    <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
 </head>
 
