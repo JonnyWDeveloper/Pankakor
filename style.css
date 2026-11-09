@@ -1,6 +1,16 @@
-/* ==========================================================================
-   CSS-variabler (Design Tokens) - Platshållare borttagen, använder råvärden
-   ========================================================================== */
+:root {
+  --color-primary: #b3002d;    /* Huvudfärg för varumärke, knappar och viktiga element */
+  --color-accent: #c8a5a4;     /* Accentfärg för dekorativa detaljer eller sekundära element */
+  --color-text: #111111;       /* Standardfärg för text */
+  --color-bg: #ffffff;         /* Bakgrundsfärg för hela sidan */
+  --color-intro-bg: #eaeaea;   /* Bakgrundsfärg specifikt för en introduktionssektion */
+  --color-focus: #0108ce;      /* Färg för fokusmarkering (viktigt för tillgänglighet) */
+  --color-link: #ffffff;       /* Färg för text i länkar */
+  --color-skip-bg: #111111;    /* Bakgrundsfärg för "hoppa till innehåll"-länkar */
+  --spacing-sm: 6px;           /* Litet avstånd mellan element */
+  --spacing-md: 24px;          /* Medelstort avstånd för layout */
+  --spacing-lg: 40px;          /* Stort avstånd för luftigare sektioner */
+}
 
 /* ==========================================================================
    1. Grundläggande inställningar
@@ -18,27 +28,30 @@
 }
 
 body {
-  background-color: #c8a5a4;
+  background-color: var(--color-accent);
   min-height: 100vh;
-  color: #111111;
+  color: var(--color-text);
   font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: clamp(1rem, 0.95rem + 0.1vw, 1.125rem);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  margin: 0;
 }
 
 /* ==========================================================================
    2. Komponenter: Verktyg & Layout
    ========================================================================== */
+/* 2. Komponenter: Verktyg & Layout */
+
 .skip-link {
   position: absolute;
   top: 0;
   inset-inline-start: 0;
   z-index: 1000;
   padding: 12px 24px;
-  color: #ffffff;
-  background-color: #111111;
+  color: var(--color-link);
+  background-color: var(--color-skip-bg);
   transform: translateY(-100%);
   transition: transform 0.2s ease;
 }
@@ -48,7 +61,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid #0108ce;
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
 
@@ -62,10 +75,10 @@ body {
 }
 
 .recipe-container {
-  background-color: #ffffff;
+  background-color: var(--color-bg);
   width: clamp(90%, 95vw, 1280px);
   margin-inline: auto;
-  margin-block-end: 60px;
+  margin-block: 60px;
   border-inline: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -87,14 +100,14 @@ body {
 
 header h1 {
   font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
-  color: #b3002d;
-  margin-block: 12px 24px;
+  color: var(--color-primary);
+  margin-block: 12px var(--spacing-md);
   text-wrap: balance;
 }
 
 .intro-text {
-  background-color: #eaeaea;
-  padding: 24px;
+  background-color: var(--color-intro-bg);
+  padding: var(--spacing-md);
   border-radius: 4px;
   margin-block-end: 40px;
 }
@@ -133,19 +146,35 @@ section h2 {
   padding: 0;
 }
 
-
 .ingredients ul {
   list-style-type: none;
   padding-inline-start: 0;
+}
+
+.ingredients li {
+  padding-block: var(--spacing-sm);
+  transition: background-color 0.2s ease;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.ingredients li:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+}
+
+/* :has() - Stryker över ingredienser vid check */
+.ingredients li:has(input[type="checkbox"]:checked) {
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 
 .instructions ol {
   padding-inline-start: 24px;
 }
 
-.ingredients li, 
 .instructions li {
-  padding-block: 6px;
+  padding-block: var(--spacing-sm);
 }
 
 /* ==========================================================================
@@ -166,9 +195,11 @@ section h2 {
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
+  /* Bakgrundsfärg för bildplaceholder */
+
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  background-color: #eaeaea;
+  background-color: var(--color-intro-bg);
 }
 
 .gallery-grid figcaption {
