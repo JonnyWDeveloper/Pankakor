@@ -38,25 +38,26 @@
         <!-- WebP väljs först, sedan AVIF och PNG som reserv för webbläsare som saknar stöd för formaten ovan. -->
         <!-- LCP (Largest Contentful Paint) mäter tiden tills sidans största synliga innehåll visas. 
          Därför har huvudbilden hög prioritet. -->
-        <picture>
-            <source srcset="images/webp/Pancake_Top.webp" type="image/webp">
-            <source srcset="images/avif/Pancake_Top.avif" type="image/avif">
-            <img class="hero-image" src="images/png/Pancake_Top.png" alt="En tunn pannkaka vikt med hallon och grädde"
-                width="1280" height="500" fetchpriority="high">
-        </picture>
-
-
-        <div class="recipe-content">
-            <!-- Header och introduktion -->
-            <header>
-                <h1>Enkelt recept på pannkakor</h1>
-                <div class="intro-text">
-                    <p>Gör traditionella tunna pannkakor med detta enkla och goda pannkaksrecept.</p>
+            <!-- Hero-sektion med bild och text sida vid sida -->
+            <section class="hero-split">
+                <div class="hero-image-wrapper">
+                    <picture>
+                        <source srcset="images/webp/Pancake_Top.webp" type="image/webp">
+                        <source srcset="images/avif/Pancake_Top.avif" type="image/avif">
+                        <img class="hero-image" src="images/png/Pancake_Top.png" alt="En tunn pannkaka vikt med hallon och grädde"
+                            width="1280" height="500" fetchpriority="high">
+                    </picture>
                 </div>
-            </header>
+                <div class="hero-text-box">
+                    <h1>Enkelt recept på pannkakor</h1>
+                    <p>Gör traditionella tunna pannkakor med detta enkla och goda pannkaksrecept.</p>
+                    <a href="#main-content" class="cta-button">LÄS RECEPTET</a>
+                </div>
+            </section>
 
-            <!-- Grid-layout för ingredienser och steg -->
-            <div class="recipe-grid">
+            <div class="recipe-content">
+                <!-- Grid-layout för ingredienser och steg -->
+                <div class="recipe-grid">
 
                 <!-- Ingredienser -->
                 <section class="ingredients">
