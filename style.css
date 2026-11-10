@@ -2,14 +2,16 @@
   --color-primary: #b3002d;    /* Huvudfärg för varumärke, knappar och viktiga element */
   --color-accent: #c8a5a4;     /* Accentfärg för dekorativa detaljer eller sekundära element */
   --color-text: #111111;       /* Standardfärg för text */
+  --color-text-secondary: #222222; /* Sekundär textfärg för t.ex. intro-text */
+  --color-text-muted: #555555; /* Dämpad färg för figcaption etc */
   --color-bg: #ffffff;         /* Bakgrundsfärg för hela sidan */
   --color-intro-bg: #eaeaea;   /* Bakgrundsfärg specifikt för en introduktionssektion */
   --color-focus: #0108ce;      /* Färg för fokusmarkering (viktigt för tillgänglighet) */
   --color-link: #ffffff;       /* Färg för text i länkar */
   --color-skip-bg: #111111;    /* Bakgrundsfärg för "hoppa till innehåll"-länkar */
-  --spacing-sm: 6px;           /* Litet avstånd mellan element */
-  --spacing-md: 24px;          /* Medelstort avstånd för layout */
-  --spacing-lg: 40px;          /* Stort avstånd för luftigare sektioner */
+  --spacing-sm: 6px;             /* Litet avstånd mellan element */
+  --spacing-md: 24px;            /* Medelstort avstånd för layout */
+  --spacing-lg: 40px;            /* Stort avstånd för luftigare sektioner */
 }
 
 /* ==========================================================================
@@ -23,6 +25,7 @@
   src: url("https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2") format("woff2");
 }
 
+/* Box-sizing reset - baserat på moderna best-practices (t.ex. Andy Bell) */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -42,8 +45,6 @@ body {
 /* ==========================================================================
    2. Komponenter: Verktyg & Layout
    ========================================================================== */
-/* 2. Komponenter: Verktyg & Layout */
-
 .skip-link {
   position: absolute;
   top: 0;
@@ -76,7 +77,7 @@ body {
 
 .recipe-container {
   background-color: var(--color-bg);
-  width: min(95%, 1100px); /* Återställd till 1100px för optimal läsbarhet */
+  width: min(95%, 1100px); /* 1100px för optimal läsbarhet */
   margin-inline: auto;
   margin-block: 60px;
   border-inline: 1px solid rgba(0, 0, 0, 0.05);
@@ -113,7 +114,7 @@ header h1 {
 }
 
 .intro-text p {
-  color: #222222;
+  color: var(--color-text-secondary);
   max-width: 65ch;
 }
 
@@ -193,19 +194,17 @@ section h2 {
 .gallery-grid img {
   display: block;
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4/3; /* Behåller bildens proportioner för en enhetlig layout */
   object-fit: cover;
-  /* Bakgrundsfärg för bildplaceholder */
-
+  background-color: var(--color-intro-bg); 
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  background-color: var(--color-intro-bg);
 }
 
 .gallery-grid figcaption {
   display: block;
   margin-top: 12px;
-  color: #555555;
+  color: var(--color-text-muted);
 }
 
 
