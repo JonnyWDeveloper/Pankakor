@@ -19,6 +19,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Skriv CSS som fungerar enligt webbstandarderna.
 
 
+
 2. Jen Simmons – använd CSS Grid och modern layout
 
     Använd CSS Grid för avancerade sidlayouter.
@@ -28,6 +29,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Undvik gamla float-baserade layoutlösningar.
 
     Bygg layouter som anpassar sig efter innehållet.
+
 
 
 3. Rachel Andrew – låt CSS sköta layouten
@@ -41,6 +43,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Prioritera tillgänglighet och begriplig kod.
 
 
+
 4. Miriam Suzanne – kontrollera CSS-kaskaden
 
     Använd @layer för att organisera CSS.
@@ -50,6 +53,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Använd Container Queries för komponentbaserad responsivitet.
 
     Undvik onödigt komplicerade selektorer.
+
 
 
 5. Elika J. Etemad (fantasai) – förstå CSS på djupet
@@ -63,6 +67,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Förstå hur webbläsaren tolkar och beräknar CSS.
 
 
+
 6. Tab Atkins Jr. – följ utvecklingen av CSS-standarderna
 
     Använd moderna CSS-standarder.
@@ -72,6 +77,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Förstå hur CSS-funktioner är konstruerade.
 
     Undvik lösningar som bygger på gamla webbläsarhack.
+
 
 
 7. Eric Meyer – skriv hållbar CSS
@@ -85,6 +91,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Prioritera kompatibilitet och långsiktig underhållbarhet.
 
 
+
 8. Una Kravets – bygg moderna designsystem
 
     Använd CSS Custom Properties.
@@ -94,6 +101,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Använd moderna funktioner för färger, layout och responsivitet.
 
     Skapa konsekventa komponenter och teman.
+
 
 
 9. Adam Argyle – använd CSS för avancerade gränssnitt
@@ -106,6 +114,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Använd moderna layout- och stylingfunktioner.
 
 
+
 10. Kevin Powell – bemästra modern CSS
 
     Använd clamp() för flexibel typografi och dimensionering.
@@ -115,6 +124,7 @@ Här är vad deras respektive expertområden innebär i praktiken.
     Skriv mobilanpassad CSS.
 
     Förstå varför CSS fungerar, inte bara vilka egenskaper du ska kopiera.
+
 
 
 Den gemensamma CSS-stilen 2026
