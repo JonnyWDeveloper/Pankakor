@@ -1,48 +1,141 @@
-Figma designprogram verkar rendera teckensnitt annorlunda an t.ex. MS Edge webbläsaren?
+Vad rekommenderar de 10 främsta CSS-auktoriteterna att man kodar 2026?
+Det intressanta är att de inte bara rekommenderar snyggare CSS. Deras gemensamma riktning är att skriva modern, semantisk, responsiv, tillgänglig och lättunderhållen CSS, med så lite onödig komplexitet som möjligt.
 
-Ja, det stämmer precis och det är ett väldigt välkänt problem för både designers och utvecklare. 
-Figma och Microsoft Edge använder helt olika tekniker för att rita upp text på skärmen, 
-vilket gör att samma teckensnitt och kod kan se tjockare, tunnare eller mer utsträckt ut i webbläsaren.
+Här är vad deras respektive expertområden innebär i praktiken.
 
-Här är de tre viktigaste orsakerna till att det skiljer sig:
+1. Lea Verou – skriv smart och standardbaserad CSS
+Använd moderna CSS-funktioner i stället för onödiga JavaScript-lösningar.
 
-1. Grafikmotor vs Operativsystem (Skia vs DirectWrite)
+Använd CSS-variabler och moderna färgsystem.
 
-• Figma är i grunden ett grafikprogram som körs på en motor som heter Skia. 
-Figma struntar i hur din dators skärm hanterar text i vanliga fall – den ritar upp texten som ren vektorgrafik. 
-Det gör att texten ser extremt mjuk, perfekt och likadan ut oavsett om du använder Mac eller Windows.
+Lär dig avancerade selektorer som :has(), :is() och :where().
 
-• MS Edge använder webbläsarmotorn Chromium, men när den ska visa text på Windows samarbetar den med systemets egna textmotor DirectWrite.
-Edge prioriterar maximal läsbarhet och prestanda framför perfekt grafik. Den använder något som kallas Font Hinting, 
-vilket innebär att den tvingar bokstävernas linjer att anpassa sig efter skärmens fysiska pixlar. 
-Det gör ofta att texten i Edge ser tunnare och skarpare ut än i Figma.
+Skriv CSS som fungerar enligt webbstandarderna.
 
-2. Hantering av radavstånd (line-height)
+2. Jen Simmons – använd CSS Grid och modern layout
+Använd CSS Grid för avancerade sidlayouter.
 
-Detta är den vanligaste anledningen till att layouten "hoppar" när design blir till kod:
+Använd Flexbox för komponenter och innehåll i en dimension.
 
-• I Figma skapas en textruta runt bokstäverna, och radavståndet beräknas ofta väldigt jämnt utifrån fontfilens inbyggda värden.
-• I MS Edge/CSS fördelas radavståndet som "halvt ledande" (half-leading) på både över- och undersidan av varje enskild textrad. 
+Undvik gamla float-baserade layoutlösningar.
 
-Om ett teckensnitt har stora osynliga marginaler i sin kod, kan texten i webbläsaren hamna några pixlar högre upp eller lägre ner än i din Figma-skiss.
+Bygg layouter som anpassar sig efter innehållet.
 
-3. Kantutjämning (Antialiasing)
+3. Rachel Andrew – låt CSS sköta layouten
+Använd Grid och Flexbox i stället för externa grid-system när de inte behövs.
 
-Webbläsare applicerar automatiskt olika filter för att runda av kanterna på bokstäver, och Windows-användare har ofta ett system som heter ClearType aktiverat. 
-Detta filter justerar subpixlar (rött, grönt, blått) för att göra texten skarpare att läsa, vilket ändrar upplevelsen helt jämfört med Figmas neutrala rendering.
+Bygg komponentbaserade CSS-lösningar.
 
-Så minskar du skillnaderna i koden
+Undvik överkonstruerade CSS-strukturer.
 
-Om du vill att koden i Edge ska efterlikna Figmas fylligare rendering så nära som möjligt, kan du lägga till dessa rader i din CSS:
+Prioritera tillgänglighet och begriplig kod.
 
-css
-body {
-  /* Gör texten i webbläsaren lite mjukare och mer lik Figmas rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
+4. Miriam Suzanne – kontrollera CSS-kaskaden
+Använd @layer för att organisera CSS.
 
-Tänk också på att alltid använda procent eller enhetslösa värden för line-height i Figma 
-(t.ex. 140% eller 1.4 istället for fasta pixelvärden som 24px). 
-Det översätts mycket mer exakt till webben.
+Förstå specificitet, arv och kaskad.
+
+Använd Container Queries för komponentbaserad responsivitet.
+
+Undvik onödigt komplicerade selektorer.
+
+5. Elika J. Etemad (fantasai) – förstå CSS på djupet
+Förstå hur CSS-layoutmotorn fungerar.
+
+Lär dig Flexbox, Grid och CSS Box Model ordentligt.
+
+Använd standardiserade CSS-lösningar.
+
+Förstå hur webbläsaren tolkar och beräknar CSS.
+
+6. Tab Atkins Jr. – följ utvecklingen av CSS-standarderna
+Använd moderna CSS-standarder.
+
+Håll koll på nya funktioner och deras webbläsarstöd.
+
+Förstå hur CSS-funktioner är konstruerade.
+
+Undvik lösningar som bygger på gamla webbläsarhack.
+
+7. Eric Meyer – skriv hållbar CSS
+Organisera CSS så att den är lätt att förstå.
+
+Undvik onödigt hög specificitet.
+
+Skapa konsekventa namngivningskonventioner.
+
+Prioritera kompatibilitet och långsiktig underhållbarhet.
+
+8. Una Kravets – bygg moderna designsystem
+Använd CSS Custom Properties.
+
+Bygg återanvändbara design tokens.
+
+Använd moderna funktioner för färger, layout och responsivitet.
+
+Skapa konsekventa komponenter och teman.
+
+9. Adam Argyle – använd CSS för avancerade gränssnitt
+Använd moderna CSS-animationer och transitions.
+
+Utnyttja CSS-logik och interaktiva funktioner.
+
+Bygg responsiva komponenter.
+
+Använd moderna layout- och stylingfunktioner.
+
+10. Kevin Powell – bemästra modern CSS
+Använd clamp() för flexibel typografi och dimensionering.
+
+Använd Grid och Flexbox i stället för fasta positioner.
+
+Skriv mobilanpassad CSS.
+
+Förstå varför CSS fungerar, inte bara vilka egenskaper du ska kopiera.
+
+Den gemensamma CSS-stilen 2026
+Om man sammanfattar deras tekniska inriktning blir detta en bra grund för modern CSS:
+
+Teknik
+
+Rekommenderad användning
+
+CSS Grid
+
+Sidlayouter och avancerade layouter
+
+Flexbox
+
+Komponenter och flexibla rader
+
+Custom Properties
+
+Variabler och designsystem
+
+Container Queries
+
+Responsiva komponenter
+
+clamp()
+
+Responsiv typografi och storlekar
+
+:has()
+
+Villkorsbaserad styling
+
+@layer
+
+Kontroll över CSS-kaskaden
+
+:where()
+
+Selektorer med låg specificitet
+
+Logical Properties
+
+Språk- och riktningsoberoende layout
+
+CSS Nesting
+
+Tydligare och mer organiserad CSS

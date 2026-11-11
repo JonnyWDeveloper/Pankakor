@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="sv">
 
 <head>
@@ -17,6 +17,9 @@
         content="Ett enkelt recept på tunna pannkakor med mjöl, mjölk och ägg. Servera med sylt, bär eller frukt.">
 
     <title>Pannkakor - Enkelt recept på pannkakor</title>
+    <meta name="theme-color" content="#ffffff">
+    
+
     <!-- Förladda typsnitt och LCP-bild -->
     <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2"
         as="font" type="font/woff2" crossorigin>
@@ -33,11 +36,13 @@
 <body>
     <a class="skip-link" href="#main-content">Hoppa till huvudinnehållet</a>
 
+    <header class="site-header">
+        <!-- <div class="header-inner">
+            <span class="site-logo">🥞</span>
+        </div> -->
+    </header>
+
     <main id="main-content" class="recipe-container" tabindex="-1">
-        <!-- Huvudbild högst upp -->
-        <!-- WebP väljs först, sedan AVIF och PNG som reserv för webbläsare som saknar stöd för formaten ovan. -->
-        <!-- LCP (Largest Contentful Paint) mäter tiden tills sidans största synliga innehåll visas. 
-         Därför har huvudbilden hög prioritet. -->
         <!-- Huvudbild högst upp -->
         <!-- WebP väljs först, sedan AVIF och PNG som reserv för webbläsare som saknar stöd för formaten ovan. -->
         <!-- LCP (Largest Contentful Paint) mäter tiden tills sidans största synliga innehåll visas. 
@@ -49,101 +54,88 @@
                 width="1280" height="500" fetchpriority="high">
         </picture>
 
-
-        <div class="recipe-content">
-            <!-- Header och introduktion -->
-            <header>
-                <h1>Enkelt recept på pannkakor</h1>
-                <div class="intro-text">
-                    <p>Gör traditionella tunna pannkakor med detta enkla och goda pannkaksrecept.</p>
-                </div>
-            </header>
-
-            <!-- Grid-layout för ingredienser och steg -->
-            <div class="recipe-grid">
-
-                <!-- Ingredienser -->
-                <section class="ingredients">
-                    <h2>Ingredienser</h2>
-
-                    <!-- dl = description list (beskrivningslista) grupperar informationen;
-                        dt = description term (term) anger namnet;
-                        dd = description details (beskrivning) anger värdet. -->
-                    <dl class="portions">
-                        <dt class="visually-hidden">Antal portioner</dt>
-                        <dd>För 4 portioner</dd>
-                    </dl>
-                    <ul>
-                        <li><label><input type="checkbox"> 2 ½ dl vetemjöl</label></li>
-                        <li><label><input type="checkbox"> ½ tsk salt</label></li>
-                        <li><label><input type="checkbox"> 6 dl mjölk</label></li>
-                        <li><label><input type="checkbox"> 3 st ägg</label></li>
-                        <li><label><input type="checkbox"> smör (till stekning)</label></li>
-                        <li><label><input type="checkbox"> sylt, bär eller frukt till servering</label></li>
-                    </ul>
-                </section>
-
-                <!-- Så här gör du -->
-                <section class="instructions">
-                    <h2>Så här gör du</h2>
-                    <ol>
-                        <li>Blanda mjöl och salt i en bunke.</li>
-                        <li>Vispa i hälften av mjölken och vispa till en slät smet.</li>
-                        <li>Vispa i resten av mjölken och äggen.</li>
-                        <li>Låt smeten vila ca 10 minuter.</li>
-                        <li>Stek tunna pannkakor i lite smör, för varje pannkaka, i en stek- eller pannkakspanna.
-                        </li>
-                        <li>Servera med sylt, bär eller frukt.</li>
-                    </ol>
-                </section>
-
+        <!-- Header och introduktion -->
+        <header class="recipe-content">
+            <h1>Enkelt recept på pannkakor</h1>
+            <div class="intro-text">
+                <p>Gör traditionella tunna pannkakor med detta enkla och goda pannkaksrecept.</p>
             </div>
+        </header>
 
-            <!-- Serveringsförslag med två bilder -->
-            <section class="serveringsforslag">
-                <h2>Serveringsförslag</h2>
-                <div class="gallery-grid">
-                    <figure>
-                        <!-- WebP väljs först; AVIF och PNG är reservformat.
-                                loading="lazy" skjuter upp hämtningen; decoding="async" avkodar utan att pausa sidan. -->
-                        <picture>
-                            <source srcset="images/webp/Pancake_Bottom_Left.webp" type="image/webp">
-                            <source srcset="images/avif/Pancake_Bottom_Left.avif" type="image/avif">
-                            <img src="images/png/Pancake_Bottom_Left.png" alt="Pannkakor med citron, hallon och grädde."
-                                width="800" height="600" loading="lazy" decoding="async">
-                        </picture>
-                        <figcaption>Pannkakor med citron, hallon och grädde.</figcaption>
-                    </figure>
-                    <figure>
-                        <!-- WebP väljs först; AVIF och PNG är reservformat.
-                                loading="lazy" skjuter upp hämtningen; decoding="async" avkodar utan att pausa sidan. -->
-                        <picture>
-                            <source srcset="images/webp/Pancake_Bottom_Right.webp" type="image/webp">
-                            <source srcset="images/avif/Pancake_Bottom_Right.avif" type="image/avif">
-                            <img src="images/png/Pancake_Bottom_Right.png"
-                                alt="Vikta pannkakor med apelsin, honung och grädde." width="800" height="600" loading="lazy" decoding="async">
-                        </picture>
-                        <figcaption>Vikta pannkakor med apelsin, honung och grädde.</figcaption>
-                    </figure>
-                </div>
+        <!-- Grid-layout för ingredienser och steg -->
+        <div class="recipe-grid recipe-content">
+            <!-- Ingredienser -->
+            <section class="ingredients">
+                <h2>Ingredienser</h2>
+                <!-- dl = description list (beskrivningslista) grupperar informationen;
+                    dt = description term (term) anger namnet;
+                    dd = description details (beskrivning) anger värdet. -->
+                <dl class="portions">
+                    <dt class="visually-hidden">Antal portioner</dt>
+                    <dd>För 4 portioner</dd>
+                </dl>
+                <ul>
+                    <li><label><input type="checkbox"> 2 ½ dl vetemjöl</label></li>
+                    <li><label><input type="checkbox"> ½ tsk salt</label></li>
+                    <li><label><input type="checkbox"> 6 dl mjölk</label></li>
+                    <li><label><input type="checkbox"> 3 st ägg</label></li>
+                    <li><label><input type="checkbox"> smör (till stekning)</label></li>
+                    <li><label><input type="checkbox"> sylt, bär eller frukt till servering</label></li>
+                </ul>
+            </section>
+
+            <!-- Så här gör du -->
+            <section class="instructions">
+                <h2>Så här gör du</h2>
+                <ol>
+                    <li>Blanda mjöl och salt i en bunke.</li>
+                    <li>Vispa i hälften av mjölken och vispa till en slät smet.</li>
+                    <li>Vispa i resten av mjölken och äggen.</li>
+                    <li>Låt smeten vila ca 10 minuter.</li>
+                    <li>Stek tunna pannkakor i lite smör, för varje pannkaka, i en stek- eller pannkakspanna.
+                    </li>
+                    <li>Servera med sylt, bär eller frukt.</li>
+                </ol>
             </section>
         </div>
+        <!-- Serveringsförslag med två bilder -->
+        <section class="serveringsforslag recipe-content">
+            <h2>Serveringsförslag</h2>
+            <div class="gallery-grid">
+                <figure>
+                    <!-- WebP väljs först; AVIF och PNG är reservformat.
+                            loading="lazy" skjuter upp hämtningen; decoding="async" avkodar utan att pausa sidan. -->
+                    <picture>
+                        <source srcset="images/webp/Pancake_Bottom_Left.webp" type="image/webp">
+                        <source srcset="images/avif/Pancake_Bottom_Left.avif" type="image/avif">
+                        <img src="images/png/Pancake_Bottom_Left.png" alt="Pannkakor med citron, hallon och grädde."
+                            width="800" height="600" loading="lazy" decoding="async">
+                    </picture>
+                    <figcaption>Pannkakor med citron, hallon och grädde.</figcaption>
+                </figure>
+                <figure>
+                    <!-- WebP väljs först; AVIF och PNG är reservformat.
+                            loading="lazy" skjuter upp hämtningen; decoding="async" avkodar utan att pausa sidan. -->
+                    <picture>
+                        <source srcset="images/webp/Pancake_Bottom_Right.webp" type="image/webp">
+                        <source srcset="images/avif/Pancake_Bottom_Right.avif" type="image/avif">
+                        <img src="images/png/Pancake_Bottom_Right.png"
+                            alt="Vikta pannkakor med apelsin, honung och grädde." width="800" height="600" loading="lazy" decoding="async">
+                    </picture>
+                    <figcaption>Vikta pannkakor med apelsin, honung och grädde.</figcaption>
+                </figure>
+            </div>
+        </section>
     </main>
 
-    <script>
-        // Registrera Service Worker för att aktivera lokal cachelagring och offline-stöd
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed: ', error);
-                    });
-            });
-        }
-    </script>
+    <!-- Registrerar en Service Worker för cachelagring och offline-stöd -->
+    <script src="script.js" defer></script>
 </body>
 
+
 </html>
+
+
+
+
+
