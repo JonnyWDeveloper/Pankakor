@@ -61,7 +61,11 @@ self.addEventListener('fetch', event => {
       try {
         const response = await fetch(event.request);
         if (response.ok && response.type === 'basic') {
-          await cache.put(event.request, response.clone());
+          try {
+            await cache.put(event.request, response.clone());
+          } catch {
+            // Ett cachefel ska inte hindra ett lyckat nätverkssvar.
+          }
         }
         return response;
       } catch {
