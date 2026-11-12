@@ -1,16 +1,16 @@
 /*
- * För GET-anrop inom sidans egen scope hämtas senaste filen från nätverket först
- * och sparas i pannkakor-cache-v2. Vid nätverksfel används den cachade filen,
- * med index.html som reserv för sidnavigeringar. Därmed får besökare uppdaterat
- * innehåll utan att du behöver ändra cacheversionen vid varje publicering.
+ * For GET requests within the page's scope, the latest file is fetched from the
+ * network first and saved to pannkakor-cache-v2. If the network fails, the cached
+ * file is used, with index.html as a fallback for page navigations. This keeps
+ * visitors up to date without requiring a cache version change for every release.
  *
- * Aktivering rensar bara appens egna gamla cacheposter och lämnar andra appars
- * cache orörd.
+ * Activation only removes this app's old cache entries and leaves other apps'
+ * caches untouched.
  */
 
 /**
- * Service Worker för Pannkaksreceptet.
- * Hämtar uppdaterat innehåll från nätverket och använder cachen offline.
+ * Service worker for the pancake recipe.
+ * Fetches updated content from the network and uses the cache offline.
  */
 
 const CACHE_PREFIX = 'pannkakor-cache-';
@@ -31,7 +31,7 @@ const urlsToCache = [
   './images/png/Pancake_Bottom_Right.png'
 ];
 
-// Installationsfas: Laddar ner och sparar alla resurser i cachen
+// Installation phase: download and store all resources in the cache.
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -41,7 +41,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// Hämta senaste versionen först och använd cachen om nätverket inte är tillgängligt.
+// Fetch the latest version first and use the cache if the network is unavailable.
 self.addEventListener('fetch', event => {
   const requestUrl = new URL(event.request.url);
   const scopeUrl = new URL(self.registration.scope);
@@ -64,7 +64,7 @@ self.addEventListener('fetch', event => {
           try {
             await cache.put(event.request, response.clone());
           } catch {
-            // Ett cachefel ska inte hindra ett lyckat nätverkssvar.
+            // A cache error should not prevent a successful network response.
           }
         }
         return response;
@@ -87,7 +87,7 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// Rensa bara den här appens gamla cacheversioner.
+// Remove only this app's old cache versions.
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => Promise.all(
