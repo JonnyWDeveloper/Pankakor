@@ -1,22 +1,22 @@
 :root {
-  --color-primary: #b3002d; /* Huvudfärg för varumärke, knappar och viktiga element */
-  --color-accent: #c8a5a4; /* Accentfärg för dekorativa detaljer eller sekundära element */
-  --color-text: #111111; /* Standardfärg för text */
-  --color-text-secondary: #222222; /* Sekundär textfärg för t.ex. intro-text */
-  --color-text-muted: #555555; /* Dämpad färg för figcaption etc */
-  --color-bg: #ffffff; /* Bakgrundsfärg för hela sidan */
-  --color-intro-bg: #eaeaea; /* Bakgrundsfärg specifikt för en introduktionssektion */
-  --color-focus: #0108ce; /* Färg för fokusmarkering (viktigt för tillgänglighet) */
-  --color-link: #ffffff; /* Färg för text i länkar */
-  --color-skip-bg: #111111; /* Bakgrundsfärg för "hoppa till innehåll"-länkar */
-  --spacing-sm: 6px; /* Litet avstånd mellan element */
-  --spacing-md: 24px; /* Medelstort avstånd för layout */
-  --spacing-lg: 40px; /* Stort avstånd för luftigare sektioner */
+  --color-primary: #b3002d;
+  --color-accent: #c8a5a4;
+  --color-text: #111111;
+  --color-text-secondary: #222222;
+  --color-text-muted: #555555;
+  --color-bg: #ffffff;
+  --color-intro-bg: #eaeaea;
+  --color-focus: #0108ce;
+  --color-link: #ffffff;
+  --color-skip-bg: #111111;
+  --color-border: rgb(0 0 0 / 5%);
+  --color-hover: rgb(0 0 0 / 3%);
+  --color-shadow: rgb(0 0 0 / 5%);
+  --spacing-sm: 0.375rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
 }
 
-/* ==========================================================================
-   1. Grundläggande inställningar
-   ========================================================================== */
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
@@ -26,11 +26,18 @@
     format("woff2");
 }
 
-/* Box-sizing reset - baserat på moderna best-practices (t.ex. Andy Bell) */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
 }
 
 body {
@@ -52,46 +59,12 @@ body {
   margin: 0;
 }
 
-/* ==========================================================================
-   2. Komponenter: Verktyg & Layout
-   ========================================================================== */
-/* .site-header {
-  padding: 1rem;
-  background-color: var(--color-bg);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-} 
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  width: min(95%, 1100px);
-  margin-inline: auto;
-}
-
-.site-logo {
-  font-size: 2rem;
-  margin-right: 1rem;
-}
-
-.main-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.main-nav a {
-  text-decoration: none;
-  color: var(--color-text);
-  font-weight: bold;
-}
-*/
-
 .skip-link {
   position: absolute;
   top: 0;
   inset-inline-start: 0;
   z-index: 1000;
-  padding: 12px 24px;
+  padding: 0.75rem 1.5rem;
   color: var(--color-link);
   background-color: var(--color-skip-bg);
   transform: translateY(-100%);
@@ -118,141 +91,124 @@ body {
 
 .recipe-container {
   background-color: var(--color-bg);
-  width: min(95%, 1100px); /* 1100px för optimal läsbarhet */
+  width: min(95%, 68.75rem);
   margin-inline: auto;
-  margin-block: 60px;
-  border-inline: 1px solid rgba(0, 0, 0, 0.05);
+  margin-block: clamp(2rem, 5vw, 3.75rem);
+  border-inline: 1px solid var(--color-border);
 }
 
-/* ==========================================================================
-   3. Receptinnehåll
-   ========================================================================== */
 .hero-image {
-  width: 100%;
-  aspect-ratio: 1280 / 500;
-  height: auto;
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1280 / 500;
+  object-fit: cover;
 }
 
 .recipe-content {
-  padding: clamp(24px, 5vi, 40px) clamp(16px, 3vi, 24px);
   width: 100%;
-}
+  padding: clamp(1.5rem, 5vi, 2.5rem) clamp(1rem, 3vi, 1.5rem);
 
-header h1 {
-  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
-  color: var(--color-primary);
-  margin-block: 12px var(--spacing-md);
-  text-wrap: balance;
+  h1 {
+    margin-block: 0.75rem var(--spacing-md);
+    color: var(--color-primary);
+    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+    text-wrap: balance;
+  }
 }
 
 .intro-text {
-  background-color: var(--color-intro-bg);
+  margin-block-end: var(--spacing-lg);
   padding: var(--spacing-md);
-  border-radius: 4px;
-  margin-block-end: 40px;
+  border-radius: 0.25rem;
+  background-color: var(--color-intro-bg);
+
+  p {
+    max-width: 65ch;
+    color: var(--color-text-secondary);
+  }
 }
 
-.intro-text p {
-  color: var(--color-text-secondary);
-  max-width: 65ch;
-}
-
-section h2 {
-  font-size: 1.5rem;
-  margin-block-end: 12px;
-  text-wrap: balance;
+.recipe-grid,
+.serveringsforslag {
+  h2 {
+    margin-block-end: 0.75rem;
+    font-size: 1.5rem;
+    text-wrap: balance;
+  }
 }
 
 .recipe-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: var(--spacing-lg);
+
+  > * {
+    flex: 1 1 18.75rem;
+  }
 }
 
-.recipe-grid > * {
-  flex: 1 1 300px;
-}
-
-/* ==========================================================================
-   4. Listor (Ingredienser & Instruktioner)
-   ========================================================================== */
-.portions {
-  margin: 0;
-  padding: 0;
-}
-
+.portions,
 .portions dd {
   margin: 0;
   padding: 0;
 }
 
-.ingredients ul {
-  list-style-type: none;
-  padding-inline-start: 0;
+.ingredients {
+  ul {
+    padding-inline-start: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: var(--spacing-sm);
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+  }
+
+  li:hover {
+    background-color: var(--color-hover);
+    cursor: pointer;
+  }
+
+  li:has(input[type="checkbox"]:checked) {
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
 }
 
-.ingredients li {
-  padding-block: var(--spacing-sm);
-  transition: background-color 0.2s ease;
-  padding: 4px;
-  border-radius: 4px;
+.instructions {
+  ol {
+    padding-inline-start: var(--spacing-md);
+  }
+
+  li {
+    padding-block: var(--spacing-sm);
+  }
 }
 
-.ingredients li:hover {
-  background-color: rgba(0, 0, 0, 0.03);
-  cursor: pointer;
-}
-
-/* :has() - Stryker över ingredienser vid check */
-.ingredients li:has(input[type="checkbox"]:checked) {
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
-.instructions ol {
-  padding-inline-start: 24px;
-}
-
-.instructions li {
-  padding-block: var(--spacing-sm);
-}
-
-/* ==========================================================================
-   5. Galleri
-   ========================================================================== */
-/* 
-   Förklaring av galleriets grid-layout:
-   - repeat(auto-fit, ...): Skapar dynamiskt så många kolumner som får plats i behållaren.
-   - minmax(min(100%, 300px), 1fr): 
-     * min(100%, 300px): Sätter en minsta bredd på 300px, men om skärmen blir smalare än 300px (t.ex. vid 200% zoom eller mobil), krymper kolumnen till 100% av tillgänglig yta för att undvika horisontell scroll.
-     * 1fr: Gör att kolumnerna expanderar och fyller ut allt kvarvarande utrymme jämnt.
-*/
-
-/* Galleri-layout som skalar flytande och automatiskt anpassar sig efter skärmbredd utan horisontell scroll */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 24px;
-}
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18.75rem), 1fr));
+  gap: var(--spacing-md);
 
-.gallery-grid figure {
-  margin: 0;
-}
+  figure {
+    margin: 0;
+  }
 
-.gallery-grid img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4/3; /* Behåller bildens proportioner för en enhetlig layout */
-  object-fit: cover;
-  background-color: var(--color-intro-bg);
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    background-color: var(--color-intro-bg);
+    box-shadow: 0 0.125rem 0.625rem var(--color-shadow);
+  }
 
-.gallery-grid figcaption {
-  display: block;
-  margin-top: 12px;
-  color: var(--color-text-muted);
+  figcaption {
+    display: block;
+    margin-block-start: 0.75rem;
+    color: var(--color-text-muted);
+  }
 }

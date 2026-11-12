@@ -1,10 +1,21 @@
-/**
- * Service Worker för Pannkaksreceptet (Pankakor)
- * Syfte: Cachar webbplatsens statiska tillgångar (HTML, CSS, bilder) i webbläsarens
- * lokala lagring (CacheStorage) för att ge blixtsnabba återbesök och offline-stöd.
+/*
+ * För GET-anrop inom sidans egen scope hämtas senaste filen från nätverket först
+ * och sparas i pannkakor-cache-v2. Vid nätverksfel används den cachade filen,
+ * med index.html som reserv för sidnavigeringar. Därmed får besökare uppdaterat
+ * innehåll utan att du behöver ändra cacheversionen vid varje publicering.
+ *
+ * Aktivering rensar bara appens egna gamla cacheposter och lämnar andra appars
+ * cache orörd.
  */
 
-const CACHE_NAME = 'pankakor-cache-v1';
+/**
+ * Service Worker för Pannkaksreceptet.
+ * Hämtar uppdaterat innehåll från nätverket och använder cachen offline.
+ */
+
+const CACHE_PREFIX = 'pannkakor-cache-';
+const CACHE_NAME = `${CACHE_PREFIX}v2`;
+const LEGACY_CACHE_NAME = 'pankakor-cache-v1';
 const urlsToCache = [
   './',
   './index.html',
@@ -30,33 +41,58 @@ self.addEventListener('install', event => {
   );
 });
 
-// Hämtningsfas (Fetch): Intercepterar nätverksanrop och svarar med cachadfil om den finns
+// Hämta senaste versionen först och använd cachen om nätverket inte är tillgängligt.
 self.addEventListener('fetch', event => {
+  const requestUrl = new URL(event.request.url);
+  const scopeUrl = new URL(self.registration.scope);
+
+  if (
+    event.request.method !== 'GET' ||
+    requestUrl.origin !== scopeUrl.origin ||
+    !requestUrl.pathname.startsWith(scopeUrl.pathname)
+  ) {
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Om filen finns i cachen, returnera den direkt (snabbare än nätverket)
-        if (response) {
-          return response;
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+
+      try {
+        const response = await fetch(event.request);
+        if (response.ok && response.type === 'basic') {
+          await cache.put(event.request, response.clone());
         }
-        // Annars hämta från nätverket
-        return fetch(event.request);
-      })
+        return response;
+      } catch {
+        const cachedResponse = await cache.match(event.request);
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+
+        if (event.request.mode === 'navigate') {
+          const cachedPage = await cache.match('./index.html');
+          if (cachedPage) {
+            return cachedPage;
+          }
+        }
+
+        return Response.error();
+      }
+    })()
   );
 });
 
-// Aktiveringsfas: Rensar bort gamla cache-versioner när en ny version släpps
+// Rensa bara den här appens gamla cacheversioner.
 self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys().then(cacheNames => Promise.all(
+      cacheNames
+        .filter(cacheName =>
+          (cacheName.startsWith(CACHE_PREFIX) && cacheName !== CACHE_NAME) ||
+          cacheName === LEGACY_CACHE_NAME
+        )
+        .map(cacheName => caches.delete(cacheName))
+    ))
   );
 });

@@ -6,7 +6,7 @@
 Deras gemensamma riktning är att skriva modern, semantisk, responsiv, tillgänglig och lättunderhållen CSS,<br>
 med så lite onödig komplexitet som möjligt.</span>
 
-### Här är vad deras respektive expertområden innebär i praktiken:
+## Här är vad deras respektive expertområden innebär i praktiken:
 
 ### <span style="color:steelblue">1. Lea Verou – skriv smart och standardbaserad CSS</span>
 
