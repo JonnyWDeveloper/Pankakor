@@ -1,3 +1,4 @@
+/* Unit strategy: rem for scalable spacing and dimensions; px for crisp line thickness. */
 :root {
   --color-primary: #b3002d;
   --color-accent: #c8a5a4;
@@ -77,7 +78,7 @@ body {
 
 :focus-visible {
   outline: 2px solid var(--color-focus);
-  outline-offset: 3px;
+  outline-offset: 0.1875rem;
 }
 
 .visually-hidden {
