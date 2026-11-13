@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Canonical link for SEO -->
+    <link rel="canonical" href="https://jonnywdeveloper.github.io/Pannkakor/" />
+
+    <!-- Open Graph tags for social media -->
+    <meta
+      property="og:title"
+      content="Pannkakor - Enkelt recept på pannkakor"
+    />
+    <meta
+      property="og:description"
+      content="Ett enkelt recept på tunna pannkakor."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://jonnywdeveloper.github.io/Pannkakor/"
+    />
+    <meta property="og:locale" content="sv_SE" />
+    <meta
+      property="og:image"
+      content="https://jonnywdeveloper.github.io/Pannkakor/images/webp/Pancake_Top.webp"
+    />
+    <meta
+      property="og:image:alt"
+      content="En tunn pannkaka vikt med hallon och grädde"
+    />
+
+    <meta
+      name="description"
+      content="Ett enkelt recept på tunna pannkakor med mjöl, mjölk och ägg. Servera med sylt, bär eller frukt."
+    />
+
+    <title>Pannkakor - Enkelt recept på pannkakor</title>
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Preload fonts and the LCP image -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="images/webp/Pancake_Top.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+
+    <!-- Inline SVG favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥞</text></svg>"
+    />
+
+    <!-- Preload the stylesheet asynchronously to keep CSS separate and avoid render-blocking -->
+    <link
+      rel="preload"
+      href="style.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript><link rel="stylesheet" href="style.css" /></noscript>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Hoppa till huvudinnehållet</a>
+
+    <header>
+      <div class="header-inner">
+        <a href="index.html" class="site-logo">🥞</a>
+        <nav>
+          <ul>
+            <li><a href="recept.html" aria-current="page">Recept</a></li>
+            <li><a href="#about">Om sajten</a></li>
+          </ul>
+          <a href="dela-recept.html" class="btn">Dela recept</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="recipe-container" tabindex="-1">
+      <!-- Hero image at the top -->
+      <!-- WebP is preferred, followed by AVIF and PNG fallbacks for browsers that do not support the earlier formats. -->
+      <!-- LCP (Largest Contentful Paint) measures how long it takes for the largest visible content to appear.
+         That is why the hero image has high priority. -->
+      <picture>
+        <source srcset="images/webp/Pancake_Top.webp" type="image/webp" />
+        <source srcset="images/avif/Pancake_Top.avif" type="image/avif" />
+        <img
+          class="hero-image"
+          src="images/png/Pancake_Top.png"
+          alt="En tunn pannkaka vikt med hallon och grädde"
+          width="1280"
+          height="500"
+          fetchpriority="high"
+        />
+      </picture>
+
+      <!-- Header and introduction -->
+      <header class="recipe-content">
+        <h1>Enkelt recept på pannkakor</h1>
+        <div class="intro-text">
+          <p>
+            Gör traditionella tunna pannkakor med detta enkla och goda
+            pannkaksrecept.
+          </p>
+        </div>
+      </header>
+
+      <!-- Grid layout for ingredients and instructions -->
+      <div class="recipe-grid recipe-content">
+        <!-- Ingredients -->
+        <section class="ingredients">
+          <h2>Ingredienser</h2>
+          <!-- dl = description list groups information;
+            dt = description term names the term;
+            dd = description details provides the description. -->
+          <dl class="portions">
+            <dt class="visually-hidden">Antal portioner</dt>
+            <dd>För 4 portioner</dd>
+          </dl>
+          <ul>
+            <li>
+              <label><input type="checkbox" /> 2 ½ dl vetemjöl</label>
+            </li>
+            <li>
+              <label><input type="checkbox" /> ½ tsk salt</label>
+            </li>
+            <li>
+              <label><input type="checkbox" /> 6 dl mjölk</label>
+            </li>
+            <li>
+              <label><input type="checkbox" /> 3 st ägg</label>
+            </li>
+            <li>
+              <label><input type="checkbox" /> smör (till stekning)</label>
+            </li>
+            <li>
+              <label
+                ><input type="checkbox" /> sylt, bär eller frukt till
+                servering</label
+              >
+            </li>
+          </ul>
+        </section>
+
+        <!-- Instructions -->
+        <section class="instructions">
+          <h2>Så här gör du</h2>
+          <ol>
+            <li>Blanda mjöl och salt i en bunke.</li>
+            <li>Vispa i hälften av mjölken och vispa till en slät smet.</li>
+            <li>Vispa i resten av mjölken och äggen.</li>
+            <li>Låt smeten vila ca 10 minuter.</li>
+            <li>
+              Stek tunna pannkakor i lite smör, för varje pannkaka, i en stek-
+              eller pannkakspanna.
+            </li>
+            <li>Servera med sylt, bär eller frukt.</li>
+          </ol>
+        </section>
+      </div>
+      <!-- Serving suggestions with two images -->
+      <section class="serving-suggestions recipe-content">
+        <h2>Serveringsförslag</h2>
+        <div class="gallery-grid">
+          <figure>
+            <!-- WebP is preferred, with AVIF and PNG as fallbacks.
+                loading="lazy" defers loading; decoding="async" decodes without blocking the page. -->
+            <picture>
+              <source
+                srcset="images/webp/Pancake_Bottom_Left.webp"
+                type="image/webp"
+              />
+              <source
+                srcset="images/avif/Pancake_Bottom_Left.avif"
+                type="image/avif"
+              />
+              <img
+                src="images/png/Pancake_Bottom_Left.png"
+                alt="Pannkakor med citron, hallon och grädde."
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <figcaption>Pannkakor med citron, hallon och grädde.</figcaption>
+          </figure>
+          <figure>
+            <!-- WebP is preferred, with AVIF and PNG as fallbacks.
+                loading="lazy" defers loading; decoding="async" decodes without blocking the page. -->
+            <picture>
+              <source
+                srcset="images/webp/Pancake_Bottom_Right.webp"
+                type="image/webp"
+              />
+              <source
+                srcset="images/avif/Pancake_Bottom_Right.avif"
+                type="image/avif"
+              />
+              <img
+                src="images/png/Pancake_Bottom_Right.png"
+                alt="Vikta pannkakor med apelsin, honung och grädde."
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <figcaption>
+              Vikta pannkakor med apelsin, honung och grädde.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-section">
+          <h2>🥞</h2>
+          <p>Enkla vardagsrecept som alla kan laga.</p>
+        </div>
+
+        <div class="footer-section">
+          <h2>Fler recept</h2>
+          <ul>
+            <li><a href="#breakfast">Frukost</a></li>
+            <li><a href="#dinner">Middag</a></li>
+            <li><a href="#dessert">Efterrätt</a></li>
+            <li><a href="#fika">Fika</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h2>Om sajten</h2>
+          <ul>
+            <li><a href="#about">Om oss</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Bilder från picsum.photos · © 2026 Ditt namn</p>
+      </div>
+    </footer>
+
+    <!-- Register a service worker for caching and offline support -->
+    <script src="script.js" defer></script>
+  </body>
+</html>

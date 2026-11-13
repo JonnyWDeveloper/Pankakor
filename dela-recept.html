@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta
+      property="og:title"
+      content="Dela ditt recept - Pannkakor"
+    />
+    <meta
+      property="og:description"
+      content="Skicka in ditt eget recept till vår receptsamling."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="sv_SE" />
+
+    <meta
+      name="description"
+      content="Dela ditt recept med oss och bli en del av vår receptsamling av enkla vardagsrecept."
+    />
+
+    <title>Dela ditt recept - Pannkakor</title>
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Preload fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Inline SVG favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥞</text></svg>"
+    />
+
+    <!-- Preload the stylesheet asynchronously -->
+    <link
+      rel="preload"
+      href="style.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript><link rel="stylesheet" href="style.css" /></noscript>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Hoppa till huvudinnehållet</a>
+
+    <header>
+      <div class="header-inner">
+        <a href="index.html" class="site-logo">🥞</a>
+        <nav>
+          <ul>
+            <li><a href="recept.html">Recept</a></li>
+            <li><a href="#about">Om sajten</a></li>
+          </ul>
+          <a href="dela-recept.html" class="btn" aria-current="page">Dela recept</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="recipe-container">
+      <div class="form-container">
+        <h1>Dela ditt recept</h1>
+        <p class="intro">Hjälp oss växa genom att skicka in ditt eget favoritrecept. Fyll i formuläret nedan och klicka på Skicka recept.</p>
+
+        <form id="recipeForm" novalidate>
+          <!-- About the recipe -->
+          <fieldset>
+            <legend>Om receptet</legend>
+
+            <div class="form-group">
+              <label for="recipeName" class="required">Receptets namn</label>
+              <input
+                type="text"
+                id="recipeName"
+                name="recipeName"
+                required
+                placeholder="T.ex. Klassiska pannkakor"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="category">Kategori</label>
+              <select id="category" name="category">
+                <option value="">Välj kategori</option>
+                <option value="breakfast">Frukost</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Middag</option>
+                <option value="dessert">Efterrätt</option>
+                <option value="fika">Fika</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="timeMinutes">Tid i minuter</label>
+                <input
+                  type="number"
+                  id="timeMinutes"
+                  name="timeMinutes"
+                  min="1"
+                  placeholder="30"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-group">
+                <label for="portions">Antal portioner</label>
+                <input
+                  type="number"
+                  id="portions"
+                  name="portions"
+                  min="1"
+                  placeholder="4"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Difficulty -->
+          <fieldset>
+            <legend>Svårighetsgrad</legend>
+            <div class="form-group">
+              <label>
+                <input type="radio" name="difficulty" value="easy" checked />
+                Lätt
+              </label>
+              <label>
+                <input type="radio" name="difficulty" value="medium" />
+                Medel
+              </label>
+              <label>
+                <input type="radio" name="difficulty" value="hard" />
+                Svår
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Recipe content -->
+          <fieldset>
+            <legend>Receptet</legend>
+
+            <div class="form-group">
+              <label for="ingredients" class="required">Ingredienser</label>
+              <textarea
+                id="ingredients"
+                name="ingredients"
+                required
+                placeholder="Skriv en ingrediens per rad, t.ex.&#10;2 1/2 dl vetemjöl&#10;1/2 tsk salt&#10;6 dl mjölk"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="instructions" class="required">Gör så här</label>
+              <textarea
+                id="instructions"
+                name="instructions"
+                required
+                placeholder="Skriv instruktionerna steg för steg, en per rad"
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <!-- About you -->
+          <fieldset>
+            <legend>Om dig</legend>
+
+            <div class="form-group">
+              <label for="userName">Ditt namn</label>
+              <input
+                type="text"
+                id="userName"
+                name="userName"
+                placeholder="Förnamn Efternamn"
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="userEmail" class="required">E-post</label>
+              <input
+                type="email"
+                id="userEmail"
+                name="userEmail"
+                required
+                placeholder="anna@exempel.se"
+                autocomplete="email"
+              />
+              <small>Vi använder din e-post bara för att kontakta dig om receptet.</small>
+            </div>
+          </fieldset>
+
+          <button type="submit">Skicka recept</button>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-section">
+          <h2>🥞</h2>
+          <p>Enkla vardagsrecept som alla kan laga.</p>
+        </div>
+
+        <div class="footer-section">
+          <h2>Fler recept</h2>
+          <ul>
+            <li><a href="#breakfast">Frukost</a></li>
+            <li><a href="#dinner">Middag</a></li>
+            <li><a href="#dessert">Efterrätt</a></li>
+            <li><a href="#fika">Fika</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h2>Om sajten</h2>
+          <ul>
+            <li><a href="#about">Om oss</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Bilder från picsum.photos · © 2026 Ditt namn</p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

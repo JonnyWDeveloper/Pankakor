@@ -33,3 +33,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Handle form submission on the recipe sharing page
+const recipeForm = document.getElementById('recipeForm');
+if (recipeForm) {
+    recipeForm.addEventListener('submit', (e) => {
+        if (e.target.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        } else {
+            e.preventDefault();
+            // Reset form and reload page
+            setTimeout(() => {
+                e.target.reset();
+                location.reload();
+            }, 100);
+        }
+    });
+
+    // Add visual feedback for form validation
+    recipeForm.addEventListener('change', () => {
+        const inputs = recipeForm.querySelectorAll('input[required], textarea[required], select[required]');
+        inputs.forEach(input => {
+            if (input.checkValidity()) {
+                input.classList.add('valid');
+                input.classList.remove('invalid');
+            }
+        });
+    });
+
+    recipeForm.addEventListener('blur', (e) => {
+        if (e.target.matches('input, textarea, select')) {
+            if (!e.target.checkValidity()) {
+                e.target.classList.add('invalid');
+                e.target.classList.remove('valid');
+            }
+        }
+    }, true);
+}
+

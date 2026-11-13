@@ -33,23 +33,25 @@
 /* Unit strategy: rem for scalable spacing and dimensions; px for crisp line thickness. */
 /* Design tokens: All colors, spacing, and dimensions are defined as variables for easy maintenance */
 :root {
-  /* Color palette - no hardcoded colors in the CSS */
-  --color-primary: #b3002d;
-  --color-accent: #c8a5a4;
-  --color-text: #111111;
-  --color-text-secondary: #222222;
-  --color-text-muted: #555555;
-  --color-bg: #ffffff;
-  --color-intro-bg: #eaeaea;
-  --color-focus: #0108ce;
-  --color-link: #ffffff;
-  --color-skip-bg: #111111;
+  /* Color palette - OKLCH system for perceptually uniform colors */
+  --color-primary: oklch(40% 0.15 25);
+  --color-accent: oklch(75% 0.08 30);
+  --color-text: oklch(15% 0.02 220);
+  --color-text-secondary: oklch(18% 0.03 220);
+  --color-text-muted: oklch(40% 0.02 220);
+  --color-bg: oklch(99% 0.001 0);
+  --color-intro-bg: oklch(92% 0.01 220);
+  --color-focus: oklch(45% 0.22 280);
+  --color-link: oklch(99% 0.001 0);
+  --color-skip-bg: oklch(15% 0.02 220);
+  --color-success: oklch(60% 0.2 140);
+  --color-error: oklch(50% 0.2 25);
 
   /* Color opacity utilities */
-  --color-border: rgb(0 0 0 / 5%);
-  --color-hover: rgb(0 0 0 / 3%);
-  --color-shadow: rgb(0 0 0 / 5%);
-  --color-focus-shadow: rgba(1, 8, 206, 0.25);
+  --color-border: oklch(0% 0 0 / 5%);
+  --color-hover: oklch(0% 0 0 / 3%);
+  --color-shadow: oklch(0% 0 0 / 5%);
+  --color-focus-shadow: oklch(45% 0.22 280 / 0.25);
 
   /* Spacing scale - rem for responsive scaling */
   --spacing-sm: 0.375rem;
@@ -314,4 +316,482 @@ body {
     margin-block-start: 0.75rem;
     color: var(--color-text-muted);
   }
+}
+
+/* ================================================================
+   HEADER & NAVIGATION
+   ================================================================ */
+
+header {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  width: min(95%, 68.75rem);
+  margin-inline: auto;
+  padding: var(--spacing-md) clamp(1rem, 3vi, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.site-logo {
+  display: inline-block;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.8;
+  }
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 1vw, 1.5rem);
+  align-items: center;
+  flex-grow: 1;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 1vw, 1.5rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+    }
+
+    &[aria-current="page"] {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: 700;
+    }
+  }
+
+  a.btn {
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-link);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+
+    &:hover {
+      background-color: oklch(45% 0.15 25);
+      border-bottom: none;
+    }
+  }
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+
+footer {
+  background-color: var(--color-intro-bg);
+  border-top: 1px solid var(--color-border);
+  margin-top: clamp(2rem, 5vh, 4rem);
+}
+
+.footer-inner {
+  width: min(95%, 68.75rem);
+  margin-inline: auto;
+  padding: clamp(1.5rem, 5vi, 2.5rem) clamp(1rem, 3vi, 1.5rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.footer-section {
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-block: 0 0.75rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-block-end: 0.5rem;
+  }
+
+  a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer-bottom {
+  background-color: oklch(85% 0.01 220);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-md) clamp(1rem, 3vi, 1.5rem);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+/* ================================================================
+   HOME PAGE - HERO & CATEGORIES
+   ================================================================ */
+
+.hero-section {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-intro-bg);
+
+  picture {
+    position: absolute;
+    inset: 0;
+    display: grid;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    align-items: center;
+    justify-items: start;
+    padding: clamp(1.5rem, 5vw, 3rem);
+    height: 100%;
+
+    h1 {
+      font-size: clamp(2rem, 3vw, 3.5rem);
+      color: var(--color-link);
+      margin: 0;
+      text-shadow: 2px 2px 4px oklch(0% 0 0 / 0.5);
+      text-wrap: balance;
+      max-width: 30ch;
+    }
+
+    p {
+      font-size: clamp(1rem, 1.2vw, 1.25rem);
+      color: var(--color-link);
+      margin: 0.5rem 0 0 0;
+      text-shadow: 1px 1px 2px oklch(0% 0 0 / 0.5);
+      max-width: 50ch;
+    }
+  }
+}
+
+.categories {
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vi, 1.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  justify-content: center;
+
+  .category-tag {
+    display: inline-block;
+    background-color: oklch(90% 0.02 220);
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-link);
+    }
+
+    &:focus-visible {
+      border-color: var(--color-focus);
+    }
+  }
+}
+
+.recipe-cards {
+  width: min(95%, 68.75rem);
+  margin-inline: auto;
+  padding: clamp(1rem, 3vi, 1.5rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: start;
+}
+
+.recipe-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: 0 0.25rem 1rem var(--color-shadow);
+    transform: translateY(-2px);
+  }
+
+  .card-image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-intro-bg);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-content {
+    padding: var(--spacing-md);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: clamp(1rem, 1.1vw, 1.25rem);
+      text-wrap: balance;
+      transition: color 0.2s ease;
+      margin-block-end: 0.5rem;
+
+      &:hover {
+        color: oklch(45% 0.15 25);
+        text-decoration: underline;
+      }
+    }
+
+    .recipe-meta {
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
+      margin-top: auto;
+    }
+  }
+}
+
+/* ================================================================
+   FORM STYLES
+   ================================================================ */
+
+.form-container {
+  width: min(95%, 48rem);
+  margin: clamp(2rem, 5vw, 3rem) auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+
+  h1 {
+    color: var(--color-primary);
+    margin-block: 0 1rem;
+    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+  }
+
+  .intro {
+    color: var(--color-text-muted);
+    margin-block-end: var(--spacing-lg);
+  }
+}
+
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  margin-block-end: var(--spacing-md);
+  background-color: var(--color-intro-bg);
+
+  legend {
+    font-weight: 700;
+    color: var(--color-primary);
+    padding-inline: var(--spacing-sm);
+    font-size: clamp(1rem, 1.05vw, 1.1rem);
+  }
+}
+
+label {
+  display: block;
+  margin-block: 1rem 0.5rem;
+  color: var(--color-text);
+  font-weight: 500;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-inline-end: 0.5rem;
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-block-end: 0.5rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: inherit;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus-visible {
+    border-color: var(--color-focus);
+    outline: none;
+  }
+
+  &:user-valid {
+    border-color: var(--color-success);
+    background-image: linear-gradient(var(--color-success) 0 0);
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1em;
+    padding-inline-end: 2.5rem;
+  }
+
+  &:user-invalid {
+    border-color: var(--color-error);
+    background-image: linear-gradient(var(--color-error) 0 0);
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1em;
+    padding-inline-end: 2.5rem;
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23111' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--spacing-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    margin-block: 0;
+  }
+
+  small {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+  }
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-block-start: -0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  &::before {
+    content: "✗";
+    font-weight: 700;
+  }
+}
+
+button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-link);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: oklch(45% 0.15 25);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.required::after {
+  content: " *";
+  color: var(--color-error);
 }
